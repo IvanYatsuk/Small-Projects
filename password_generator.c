@@ -1,25 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 int main()
 {
-    int choice;
-    char password[16];
-    char words[68] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&";
+    int length;
+    char *password = malloc(length + 1);
+    char *pool = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&";
+    int pool_size = strlen(pool);
     srand(time(NULL));
     do{
-    printf("Press 1 to start generating a password, press 0 to stop the program");
-    scanf("%d", &choice);
-    if(choice == 1){
-        
-    }else if(choice == 0){
-        printf("Stopping the Program");
-        return 0;
+    printf("Enter the length of password");
+    scanf("%d", &length);
+    if(length < 48){
+        for (int i = 0; i < length; i++){
+            int index = rand() % pool_size; // Генерация случайного индекса
+            password[i] = pool[index]; // Выбор символа из пула и добавление в пароль
+        }
+        password[length] = '\0';
+        printf("Generated password: %s\n", password);
+        free(password);
+    }else if(length > 48){
+        printf("The length of password is too big.");
+        break;
+    }else if(password == NULL){
+        printf("Memory Error");
+        return 1;
     }else{
         printf("Incorrect input");
         break;
     }
     return 0;
-}while(choice == 0 || choice == 1);
+}while(length < 48);
 
 }

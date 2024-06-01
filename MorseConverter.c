@@ -2,14 +2,27 @@
 #include <stdlib.h>
 #include <string.h>
 
-int *dynamicArrayOfWords; // Declare a pointer to an array
-int sizeOfWords;
-char WordsInMorse;
 int main()
 {
-    printf("Enter the text in Morse language:");
-    scanf("%s", &WordsInMorse);
-    while(strlen(WordsInMorse) < 2048){
-        
+    char *WordsInMorse;
+    printf("Enter the text in Morse language: ");
+    scanf("%s", WordsInMorse);
+    int length = strlen(WordsInMorse);
+    
+    while(length  < 2048){
+        if(length > 2048){
+            printf("Too much words");
+            break;
+        }else{
+            WordsInMorse = (char *)malloc(length * sizeof(char));
+            
+            if(WordsInMorse == NULL){
+                printf("Memory allocation failed!\n");
+                return 1;
+            }else{
+                
+            }
+        }
     }
 }
+

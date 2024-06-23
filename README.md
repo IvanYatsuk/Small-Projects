@@ -1,4 +1,4 @@
-<b> This is a list of small C projects to master this programming language.<b> 
+<b> This is a list of small C projects to master this programming language:</b> 
 
 converter.c - temperature converter.
 
